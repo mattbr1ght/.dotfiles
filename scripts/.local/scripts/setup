@@ -1,0 +1,33 @@
+sudo mkdir -p /etc/ly &&
+sudo cp ~/.dotfiles/ly/config.ini /etc/ly/ &&
+echo ":: Copied Ly config to /etc/ly/config.ini"
+
+sudo mkdir -p /usr/share/cowsay/cows/ &&
+sudo cp ~/.dotfiles/!custom/*.cow /usr/share/cowsay/cows/ &&
+echo ":: Copied custom Cow files to /usr/share/cowsay/cows/"
+
+# firefox?
+
+# gimp?
+
+# grub?
+
+# mpd?
+
+# mpv?
+
+# openssh
+
+# ssh
+
+# keys and certs
+
+# spotify
+
+# swww?
+
+# tailscale?
+
+echo "!! You can add an ftp mount entry to your /etc/fstab \
+like shown in .dotfiles/fstab (curlftps required)"
+

@@ -1,0 +1,2 @@
+selected=$(find ~/.dotfiles -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | fzf)
+stow -d ~/.dotfiles -t ~/ $selected

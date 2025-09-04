@@ -1,0 +1,14 @@
+##
+## A kitten of sorts, I think
+##
+$eye = chop($eyes);
+$the_cow = <<EOC;
+     $thoughts
+      $thoughts
+   |\\---/|
+   | ,_, |
+    \\_`_/-..----.
+ ___/ `   ' ,""+ \\  
+(__...'   __\\    |`.___.';
+  (_,...'(_,.`__)/'.....+
+EOC

@@ -1,0 +1,19 @@
+# /dev/nvme0n1p3
+UUID=e9aadb79-0e19-4935-b2e6-942ff87c116a	/         	ext4      	rw,relatime	0 1
+
+# /dev/nvme0n1p1
+UUID=E127-A4E6      	/boot/efi 	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro	0 2
+
+# /dev/sda2
+UUID=8bb17580-542b-4845-b0dc-6392699bfab2	/home     	ext4      	rw,relatime	0 2
+
+# /dev/nvme0n1p2
+UUID=cfc3747b-3a2d-416b-8841-73d3ae71f349	none      	swap      	defaults  	0 0
+
+# /dev/sda1
+UUID=43D5938C4AE409B3 /data ntfs-3g defaults,uid=1000,gid=1000,windows_names,big_writes,windows_hibernation_check 0 0
+
+# bind /data to /home/operator/data instead of a symlink
+/data /home/operator/data none bind 0 0
+
+curlftpfs#ftp.zsi.kielce.pl /home/operator/school-drive fuse _netdev,noauto,x-systemd.automount,user,uid=1000 0 0

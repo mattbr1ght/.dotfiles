@@ -1,0 +1,4 @@
+- [x] configure stow
+- [ ] push new dotfiles
+- [x] configure ftp directory to school drive
+- [ ] preview-tabbed / preview-tui plugin for [nnn](https://github.com/jarun/nnn/wiki/Live-previews)

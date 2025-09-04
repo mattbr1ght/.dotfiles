@@ -1,0 +1,2 @@
+#! /bin/bash
+echo -n 'sudo pacman -S ' & pacman -Qeq | tr '\n' ' '
