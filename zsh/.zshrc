@@ -60,7 +60,7 @@ markconfig() {
 alias pconfig-todo='cat ~/.config/config-packages.md'
 
 #eval $(ssh-agent); clear;
-neofetch;
+neofetch --ascii ~/.config/neofetch/planet;
 
 autoload -Uz compinit promptinit
 compinit
