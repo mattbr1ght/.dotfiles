@@ -1,4 +1,4 @@
-# 🎲 mattbr1ght's dotfiles
+# mattbr1ght's dotfiles
 
 > My dotfiles shared to all of the world
 
@@ -7,19 +7,19 @@
 ![commits](https://img.shields.io/github/commit-activity/t/semanticdata/ximena)
 ![last commit](https://img.shields.io/github/last-commit/semanticdata/ximena)
 
-## 📑 Table of Contents
+## Table of Contents
 
-- [🎲 Project Name](#-project-name)
-  - [📑 Table of Contents](#-table-of-contents)
-  - [📄 Description](#-description)
+- [ Project Name](#-project-name)
+  - [Table of Contents](#-table-of-contents)
+  - [Description](#-description)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
   - [Changelog](#changelog)
-  - [🗺 Roadmap](#-roadmap)
-  - [❤ Acknowledgments](#-acknowledgments)
+  - [Roadmap](#-roadmap)
+  - [Acknowledgments](#-acknowledgments)
   - [© License](#-license)
 
-## 📄 Description
+## Description
 
 My personal dotfiles: configs for shell, editors, and tools that make my workflow fast, consistent, and portable across machines. Useful for anyone looking to save setup time, keep environments in sync, or explore new dev setups.
 
@@ -71,7 +71,7 @@ I use [Semantic Versioning](https://semver.org/) for releases.
 - 0.0.1
   - Initial commit
 
-## 🗺 Roadmap
+## Roadmap
 
 - [x] Start using stow to manage my dotfiles
 - [x] Upload dotfiles for public use
@@ -80,7 +80,7 @@ I use [Semantic Versioning](https://semver.org/) for releases.
 - [ ] Create installation script/s for packages, things that stow can't do
 - [ ] Tweak as I grow as a developer
 
-## ❤ Acknowledgments
+## Acknowledgments
 
 Thanks to these amazing people and projects:
 
