@@ -2,10 +2,10 @@
 
 > My dotfiles shared to all of the world
 
-![code size](https://img.shields.io/github/languages/code-size/semanticdata/ximena)
-![repository size](https://img.shields.io/github/repo-size/semanticdata/ximena)
-![commits](https://img.shields.io/github/commit-activity/t/semanticdata/ximena)
-![last commit](https://img.shields.io/github/last-commit/semanticdata/ximena)
+
+![repo size](https://img.shields.io/github/repo-size/mattbr1ght/.dotfiles)
+![commit activity](https://img.shields.io/github/commit-activity/t/mattbr1ght/.dotfiles)
+![last commit](https://img.shields.io/github/last-commit/mattbr1ght/.dotfiles)
 
 ## Table of Contents
 
