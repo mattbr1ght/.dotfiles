@@ -1,0 +1,13 @@
+[Unit]
+Description=Enable Zen Mode
+After=graphical-session.target
+
+[Service]
+Environment="PATH=$HOME/.local/scripts:$HOME/.local/bin:/usr/bin"
+Type=oneshot
+ExecStart=%h/.local/bin/zen-on
+ExecStop=%h/.local/bin/zen-off
+RemainAfterExit=yes
+
+[Install]
+WantedBy=default.target
