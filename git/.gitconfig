@@ -1,5 +1,6 @@
 [user]
 	name = Mateusz Wroński
 	email = 78876597+mattbr1ght@users.noreply.github.com
+	signingkey = FF23F9C538F558A0
 [init]
 	defaultBranch = main
