@@ -13,6 +13,8 @@ bindkey "\e[3~" delete-char
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.local/scripts:$PATH"
 export RUSTUP_TOOLCHAIN="nightly"
+export EDITOR=nvim
+export GPG_TTY=$(tty)
 
 (cat ~/.cache/wal/sequences &)
 
