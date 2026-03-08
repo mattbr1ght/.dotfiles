@@ -9,12 +9,13 @@ bindkey "^[[4~" end-of-line
 # Map Delete key
 bindkey "\e[3~" delete-char
 
-# Created by newuser for 5.9
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.local/scripts:$PATH"
+export PATH="$PATH:$HOME/projects/ncl-org/target/debug"
 export RUSTUP_TOOLCHAIN="nightly"
 export EDITOR=nvim
 export GPG_TTY=$(tty)
+source .env
 
 (cat ~/.cache/wal/sequences &)
 
@@ -31,9 +32,11 @@ alias packs='pacman -Qeq'
 alias df='df -h'
 alias cat='bat'
 alias ts='tmux-sessionizer'
+alias bios='sudo systemctl reboot --firmware-setup'
 #alias unzip='tar xvf'
 
 source ~/.config/fzf/config
+source /usr/share/nvm/init-nvm.sh
 
 #PS1='[\u@\h \W]\$ '
 
@@ -75,3 +78,20 @@ eval $(ssh-agent)
 clear;neofetch --ascii ~/.config/neofetch/planet;
 
 
+
+export PHPVM_DIR="/home/operator/.phpvm"
+export PATH="$PHPVM_DIR/bin:$PATH"
+if [[ -s "$PHPVM_DIR/phpvm.sh" ]]; then
+  source "$PHPVM_DIR/phpvm.sh"
+fi
+export PATH="/home/operator/.config/herd-lite/bin:$PATH"
+export PHP_INI_SCAN_DIR="/home/operator/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
+
+# Load pyenv automatically by appending
+# the following to 
+# ~/.zprofile (for login shells)
+# and ~/.zshrc (for interactive shells) :
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"

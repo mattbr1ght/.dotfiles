@@ -13,17 +13,22 @@ fi
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
-if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -s $selected_name -c $selected
-    exit 0
-fi
+# if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+#     tmux new-session -ds $selected_name -c $selected
+#     tmux new-window -t $selected_name -c $selected
+#     # exit 0
+# fi
 
-if ! tmux has-session -t=$selected_name 2> /dev/null; then
-    tmux new-session -ds $selected_name -c $selected
+if ! tmux has-session -t $selected_name 2> /dev/null; then
+    tmux new-session -ds $selected_name -c $selected -n "editor"
+    tmux new-window -t $selected_name -c $selected -n "exec"
+    tmux send-keys -t "$selected_name:editor" "nvim" C-m
+    tmux send-keys -t "$selected_name:exec" "ls" C-m
+    tmux select-window -t "$selected_name:exec"
 fi
 
 if [[ -z $(tmux list-clients) ]]; then
-    tmux a -t $selected_name
+    tmux attach-session -t $selected_name
 else
     tmux switch-client -t $selected_name
 fi

@@ -1,0 +1,5 @@
+sudo umount ~/public
+sudo umount ~/personal
+sudo mount -t cifs -o username=matt,password=veehoiM3,iocharset=utf8,uid=1000,gid=1000 //192.168.100.10/Public ~/public
+sudo mount -t cifs -o username=matt,password=veehoiM3,iocharset=utf8,uid=1000,gid=1000 //192.168.100.10/Users ~/personal
+rclone mount zsi: /zsi --daemon

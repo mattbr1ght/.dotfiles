@@ -22,6 +22,7 @@
         // "idle_inhibitor",
         "pulseaudio",
         "network",
+        "custom/vpn",
         // "power-profiles-daemon",
         // "memory",
         "temperature",
@@ -143,7 +144,14 @@
 			"hibernate": "systemctl hibernate"
 		}
     },
+    "custom/vpn": {
+	  "tooltip": false,
+      "exec": "ip link show tun0 >/dev/null 2>&1 && echo 'VPN ON' || echo 'VPN OFF'",
+      "on-click": "sudo pkill openvpn || sudo openvpn --config /home/operator/downloads/mateuszw_nc.ovpn &",
+      "interval": 1
+    },
     "custom/zen": {
+	  "tooltip": false,
       "exec": "zen-mode status | awk '{print ($1==\"1\" ? \"🌙 Zen\" : \"☀️ Normal\")}'",
       "on-click": "zen-mode toggle",
       "interval": 1
