@@ -4,11 +4,20 @@ vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
 vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
 vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>') 
 
+-- Table to track hint state per buffer
+local inlay_hint_enabled = {}
+
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
   callback = function(event)
     local opts = {buffer = event.buf}
 
+    -- Inlay hintsss
+    local client = vim.lsp.get_client_by_id(event.data.client_id)
+    if client.server_capabilities.inlayHintProvider then
+        vim.lsp.inlay_hint.enable(true, { bufnr = event.buf })
+        inlay_hint_enabled[event.buf] = true
+    end
     -- these will be buffer-local keybindings
     -- because they only work if you have an active language server
 
@@ -23,6 +32,41 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
     vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
   end
+})
+
+vim.lsp.config("lua_ls", {
+  settings = {
+    Lua = {
+      hint = { enable = true },
+    },
+  },
+})
+
+vim.lsp.config("clangd", {
+  settings = {
+    clangd = {
+      InlayHints = {
+        Enabled = true,
+        ParameterNames = true,
+        DeducedTypes = true,
+        Designators = true,
+      },
+      fallbackFlags = { "-std=c++20" },
+    },
+  },
+})
+
+vim.lsp.config("rust_analyzer", {
+  settings = {
+    ["rust-analyzer"] = {
+      inlayHints = {
+        chainingHints = { enable = true },
+        closingBraceHints = { enable = true, minLines = 25 },
+        parameterHints = { enable = true },
+        typeHints = { enable = true },
+      },
+    },
+  },
 })
 
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -60,3 +104,22 @@ cmp.setup({
     end,
   },
 })
+
+-- Toggle function
+function _G.toggle_inlay_hints()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local enabled = inlay_hint_enabled[bufnr]
+
+  if enabled then
+    vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })  -- disables for this buffer
+    inlay_hint_enabled[bufnr] = false
+    print("Inlay hints disabled")
+  else
+    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr }) -- enable for this buffer
+    inlay_hint_enabled[bufnr] = true
+    print("Inlay hints enabled")
+  end
+end
+
+-- Optional: bind it to a key
+vim.keymap.set('n', '<leader>ih', ':lua toggle_inlay_hints()<CR>', { desc = 'Toggle LSP Inlay Hints' })

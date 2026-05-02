@@ -15,12 +15,13 @@ export PATH="$PATH:$HOME/projects/ncl-org/target/debug"
 export RUSTUP_TOOLCHAIN="nightly"
 export EDITOR=nvim
 export GPG_TTY=$(tty)
-source .env
+source ~/.env
+source ~/vulkansdk/default/setup-env.sh
 
 (cat ~/.cache/wal/sequences &)
 
 
-alias ls='ls --color=auto'
+alias ls='ls --color=auto -ah'
 alias rm='rm -ri'
 alias grep='grep --color=auto'
 alias cls='clear'
@@ -33,6 +34,7 @@ alias df='df -h'
 alias cat='bat'
 alias ts='tmux-sessionizer'
 alias bios='sudo systemctl reboot --firmware-setup'
+alias ssh='ssh -A'
 #alias unzip='tar xvf'
 
 source ~/.config/fzf/config
@@ -73,7 +75,6 @@ promptinit
 
 prompt walters
 
-eval $(ssh-agent)
 
 clear;neofetch --ascii ~/.config/neofetch/planet;
 
@@ -94,4 +95,9 @@ export PHP_INI_SCAN_DIR="/home/operator/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
 
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+
 eval "$(pyenv init - zsh)"
+if [[ -z "${SSH_CONNECTION}" ]]; then
+    eval $(ssh-agent)
+    export SSH_AUTH_SOCK="$HOME/.bitwarden-ssh-agent.sock"
+fi
